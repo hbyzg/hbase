@@ -204,7 +204,7 @@ public class HMasterCommandLine extends ServerCommandLine {
         ZKUtil.loginServer(conf, HConstants.ZK_SERVER_KEYTAB_FILE,
           HConstants.ZK_SERVER_KERBEROS_PRINCIPAL, null);
         int localZKClusterSessionTimeout =
-          conf.getInt(HConstants.ZK_SESSION_TIMEOUT + ".localHBaseCluster", 10*1000);
+          conf.getInt(HConstants.ZK_SESSION_TIMEOUT + ".localHBaseCluster", 60* 60*10*1000);
         conf.setInt(HConstants.ZK_SESSION_TIMEOUT, localZKClusterSessionTimeout);
         LOG.info("Starting a zookeeper cluster");
         int clientPort = zooKeeperCluster.startup(zkDataPath);
@@ -223,7 +223,7 @@ public class HMasterCommandLine extends ServerCommandLine {
         int mastersCount = conf.getInt("hbase.masters", 1);
         int regionServersCount = conf.getInt("hbase.regionservers", 1);
         // Set start timeout to 5 minutes for cmd line start operations
-        conf.setIfUnset("hbase.master.start.timeout.localHBaseCluster", "300000");
+        conf.setIfUnset("hbase.master.start.timeout.localHBaseCluster", "30000000");
         LOG.info("Starting up instance of localHBaseCluster; master=" + mastersCount +
           ", regionserversCount=" + regionServersCount);
         LocalHBaseCluster cluster = new LocalHBaseCluster(conf, mastersCount, regionServersCount,
