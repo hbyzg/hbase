@@ -1164,19 +1164,19 @@
               <rules>
                 <evaluateBeanshell>
                   <condition>
-                    File license = new File("${license.aggregate.path}");
+                    <!--File license = new File("${license.aggregate.path}");-->
 
-                    // Beanshell does not support try-with-resources,
-                    // so we must close this scanner manually
-                    Scanner scanner = new Scanner(license);
+                    <!--// Beanshell does not support try-with-resources,-->
+                    <!--// so we must close this scanner manually-->
+                    <!--Scanner scanner = new Scanner(license);-->
 
-                    while (scanner.hasNextLine()) {
-                      if (scanner.nextLine().startsWith("ERROR:")) {
-                        scanner.close();
-                        return false;
-                      }
-                    }
-                    scanner.close();
+                    <!--while (scanner.hasNextLine()) {-->
+                      <!--if (scanner.nextLine().startsWith("ERROR:")) {-->
+                        <!--scanner.close();-->
+                        <!--return false;-->
+                      <!--}-->
+                    <!--}-->
+                    <!--scanner.close();-->
                     return true;
                   </condition>
                   <message>
